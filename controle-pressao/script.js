@@ -34,8 +34,7 @@ async function buscarRegistros(){
             <tr>
                 <td>${registro.id_registro}</td>
                 <td>${registro.data_hora}</td>
-                <td>${registro.sistolica}</td>
-                <td>${registro.diastolica}</td>
+                <td>${registro.sistolica}/${registro.diastolica}</td>
             </tr>
             `;
 
