@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap');
 
 :root {
     --bg-gradient-start: #f4f8fa;
@@ -11,6 +11,7 @@
     --text-light-muted: #94a8b8;
     --border-color: #f5f8fa;
 
+    /* Cores de Status */
     --status-normal: #1ca363;
     --status-normal-bg: #edf9f2;
     --status-attention: #ffab2e;
@@ -68,7 +69,7 @@ body {
     overflow: hidden;
 }
 
-/* Detalhe curvo esverdeado no topo do card igual à foto */
+/* Detalhe curvo esverdeado no topo do card */
 .container::before {
     content: '';
     position: absolute;
@@ -219,22 +220,30 @@ h2::after {
     gap: 12px;
 }
 
-/* Lista de Itens Dinâmicos */
+/* ========================================================================== */
+/* GRID DOS ITENS DO HISTÓRICO (Totalmente Simétrico e Centralizado)         */
+/* ========================================================================== */
+
 .record-item {
     background-color: #ffffff;
     border: 1px solid #f0f4f7;
     border-radius: 16px;
-    padding: 14px 16px;
+    padding: 14px 8px;
     display: grid;
-    grid-template-columns: 0.6fr 1.5fr 1.1fr 1fr;
+    grid-template-columns: repeat(4, 1fr); /* Divide o espaço em 4 blocos idênticos de 25% */
     align-items: center;
+    justify-items: center; /* Centraliza horizontalmente cada bloco na sua respectiva coluna */
     box-shadow: 0 4px 12px rgba(18, 35, 51, 0.01);
 }
 
+/* Configura cada uma das colunas (Dia, Data, Pressão, Status) */
 .record-item > div {
     display: flex;
     flex-direction: column;
+    align-items: center; /* Centraliza os textos internamente */
+    text-align: center;
     gap: 4px;
+    width: 100%;
 }
 
 .record-item .label {
@@ -302,11 +311,10 @@ h2::after {
     border: 1px solid rgba(62, 120, 255, 0.25);
 }
 
-/* Indicador de status lateral direito */
+/* Ajuste da Coluna de Status para Alinhamento Central */
 .col-status {
-    flex-direction: row !important;
-    align-items: center;
-    justify-content: flex-end;
+    flex-direction: row !important; /* Mantém ícone e texto na mesma linha */
+    justify-content: center !important; /* Centraliza a linha no meio do espaço de 25% */
     gap: 6px !important;
 }
 
@@ -327,6 +335,7 @@ h2::after {
     color: #405566;
 }
 
+/* Animação do Loader */
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
