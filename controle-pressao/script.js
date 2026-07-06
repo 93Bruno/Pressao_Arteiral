@@ -2,9 +2,16 @@ const botao = document.getElementById("btnBuscar");
 const recordsContainer = document.getElementById("tabela-records");
 const mensagem = document.getElementById("mensagem");
 
-botao.addEventListener("click", buscarRegistros);
+// Ouvinte do botão agora busca todos os registros ao ser clicado
+botao.addEventListener("click", () => buscarRegistros(false));
 
-async function buscarRegistros() {
+// AO ENTRAR NA PÁGINA: Busca automaticamente apenas os 5 últimos
+document.addEventListener("DOMContentLoaded", () => {
+    if (window.lucide) lucide.createIcons();
+    buscarRegistros(true); // 'true' ativa o limite de 5 registros iniciais
+});
+
+async function buscarRegistros(apenasLimitarCinco = false) {
     mensagem.innerHTML = `<i data-lucide="loader-2" class="info-heart-icon animate-spin"></i> <span>Carregando registros...</span>`;
     if (window.lucide) lucide.createIcons();
 
@@ -14,6 +21,7 @@ async function buscarRegistros() {
         const resposta = await fetch("/api/registros");
         const dados = await resposta.json();
 
+        // Restaura o texto inicial após o carregamento bem-sucedido
         mensagem.innerHTML = `<i data-lucide="heart" class="info-heart-icon"></i> <span>Clique em buscar para ver seus registros.</span>`;
         if (window.lucide) lucide.createIcons();
 
@@ -23,23 +31,25 @@ async function buscarRegistros() {
             return;
         }
 
-        dados.forEach(registro => {
+        // Se 'apenasLimitarCinco' for verdadeiro (ao entrar no site), pega só 5. Se for falso (clique no botão), traz todos.
+        const dadosParaExibir = apenasLimitarCinco ? dados.slice(0, 5) : dados;
+
+        dadosParaExibir.forEach(registro => {
             const sis = parseInt(registro.sistolica);
             const dia = parseInt(registro.diastolica);
 
             let statusClass = "normal";
             let statusText = "Normal";
 
-            // Se os valores no banco forem salvos inteiros (ex: 120 e 80), dividimos por 10 para o layout 12/8
             const sisExibicao = sis > 40 ? Math.floor(sis / 10) : sis;
             const diaExibicao = dia > 40 ? Math.floor(dia / 10) : dia;
 
-            // NOVA CONDIÇÃO: Pressão Baixa
+            // Condição para Pressão Baixa
             if (sisExibicao <= 10 && diaExibicao <= 6) {
                 statusClass = "low";
                 statusText = "Baixa";
             }
-            // Regra de coloração baseada nos valores de exibição elevados
+            // Condições para pressões elevadas
             else if (sisExibicao >= 14 || diaExibicao >= 9) {
                 statusClass = "high";
                 statusText = "Alta";
@@ -48,7 +58,6 @@ async function buscarRegistros() {
                 statusText = "Atenção";
             }
 
-            // Pega a string "DD/MM/AAAA" que o seu backend gerou
             const dataFormatada = registro.data_hora;
 
             const blocoRegistro = `
@@ -89,7 +98,3 @@ async function buscarRegistros() {
 function formatarData(data) {
     return data;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    if (window.lucide) lucide.createIcons();
-});
