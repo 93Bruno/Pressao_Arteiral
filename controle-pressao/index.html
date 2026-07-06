@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Controle de Pressão Arterial</title>
-
     <link rel="stylesheet" href="style.css">
-
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
 
-<div class="container">
+<div class="app-container">
+    <header class="section-title">2. SAÚDE / APP</header>
 
-    <h1>🩺 Controle de Pressão Arterial</h1>
+    <main class="app-card">
 
-    <button id="btnBuscar">
-        Buscar Registros
-    </button>
+        <div class="logo-container">
+            <div class="heart-icon-bg">
+                <i data-lucide="heart-pulse" class="main-heart-icon"></i>
+            </div>
+            <span class="plus-decor decor-1">+</span>
+            <span class="plus-decor decor-2">+</span>
+            <span class="plus-decor decor-3">+</span>
+        </div>
 
-    <div id="mensagem"></div>
+        <h1 class="main-title">Minha Pressão Arterial</h1>
+        <p class="subtitle">Cuidar de você é a melhor escolha</p>
 
-    <table id="tabela">
+        <button id="btnBuscar" class="btn-search">
+            <i data-lucide="search"></i> Buscar Registros
+        </button>
 
-        <thead>
+        <div id="mensagem" class="info-alert">
+            <i data-lucide="heart" class="info-heart-icon"></i>
+            <span>Clique em buscar para ver seus registros.</span>
+        </div>
 
-        <tr>
-            <th>Dia</th>
-            <th>Data</th>
-            <th>Pressão</th>
-        </tr>
+        <section class="records-section">
+            <h2 class="records-title">Últimos Registros</h2>
 
-        </thead>
+            <div id="tabela-records" class="records-list">
 
-        <tbody>
+            </div>
+        </section>
 
-        </tbody>
-
-    </table>
-
+    </main>
 </div>
 
 <script src="script.js"></script>
-
 </body>
-
 </html>

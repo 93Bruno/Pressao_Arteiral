@@ -1,114 +1,182 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+/* Importando uma fonte limpa e moderna similar à imagem */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg-gradient-start: #f4f8fa;
+    --bg-gradient-end: #edf3f6;
+    --app-card-bg: #ffffff;
+    --primary-green: #1ca363;
+    --primary-green-hover: #16854f;
+    --text-dark: #122333;
+    --text-muted: #61768a;
+    --text-light-muted: #94a8b8;
+    --alert-bg: #f2f9f5;
+    --border-color: #f0f4f7;
+    
+    /* Cores de status baseadas na imagem */
+    --status-normal: #1ca363;
+    --status-normal-bg: #edf9f2;
+    --status-attention: #ffab2e;
+    --status-attention-bg: #fff7eb;
+    --status-high: #ff4d4d;
+    --status-high-bg: #ffebeb;
 }
 
-body{
-
-    background:#edf2f7;
-
-    display:flex;
-
-    justify-content:center;
-
-    padding:40px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif; /* Fonte atualizada para o padrão moderno do app */
 }
 
-.container{
-
-    width:900px;
-
-    background:white;
-
-    border-radius:10px;
-
-    padding:30px;
-
-    box-shadow:0 0 15px rgba(0,0,0,.15);
-
+body {
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-h1{
-
-    text-align:center;
-
-    margin-bottom:30px;
-
-    color:#2d3748;
-
+/* Substituindo o container antigo de 900px pela largura de celular do app */
+.app-container {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-button{
-
-    width:100%;
-
-    padding:15px;
-
-    background:#3182ce;
-
-    color:white;
-
-    border:none;
-
-    border-radius:8px;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:.3s;
+.section-title {
+    text-align: center;
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
 }
 
-button:hover{
-
-    background:#2b6cb0;
-
+/* Card Principal Branco */
+.app-card {
+    background: var(--app-card-bg);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(18, 35, 51, 0.04);
+    padding: 35px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
-#mensagem{
-
-    margin-top:20px;
-
-    margin-bottom:20px;
-
-    text-align:center;
-
-    color:#555;
-
+/* Gradiente sutil no topo do card, igual ao fundo esverdeado suave da imagem */
+.app-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: radial-gradient(circle at top, rgba(28, 163, 99, 0.04) 0%, transparent 70%);
+    pointer-events: none;
 }
 
-table{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-    margin-top:20px;
-
+/* Container do Logotipo Central */
+.logo-container {
+    position: relative;
+    margin-bottom: 20px;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-thead{
-
-    background:#3182ce;
-
-    color:white;
-
+.heart-icon-bg {
+    width: 76px;
+    height: 76px;
+    background: linear-gradient(135deg, #1ca363 0%, #15804e 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(28, 163, 99, 0.25);
 }
 
-th,td{
-
-    padding:15px;
-
-    border-bottom:1px solid #ddd;
-
-    text-align:center;
-
+.main-heart-icon {
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    stroke-width: 2.5;
 }
 
-tbody tr:hover{
-
-    background:#f8f8f8;
-
+/* Elementos de sinais de mais (+) flutuantes */
+.plus-decor {
+    position: absolute;
+    color: #a3dec0;
+    font-size: 16px;
+    font-weight: bold;
 }
+.decor-1 { top: 5px; left: -10px; font-size: 12px; }
+.decor-2 { bottom: 20px; left: -5px; }
+.decor-3 { top: 30px; right: -10px; }
+
+/* Título e Subtítulo */
+.main-title {
+    color: var(--text-dark);
+    font-size: 1.65rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.subtitle {
+    color: var(--primary-green);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+/* Botão Buscar Registros (Atualizado do antigo azul para o verde da foto) */
+.btn-search {
+    width: 100%;
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(28, 163, 99, 0.15);
+    margin-bottom: 24px;
+}
+
+.btn-search:hover {
+    background-color: var(--primary-green-hover);
+}
+
+.btn-search:active {
+    transform: scale(0.99);
+}
+
+.btn-search i {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+}
+
+/* Box da Mensagem de Alerta */
+.info-alert {
+    width: 100%;
+    background-color: var(--alert-bg);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items
