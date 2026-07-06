@@ -12,7 +12,7 @@
 <div class="app-container">
     <header class="section-title">Bem-Vindo Bruno Sousa</header>
 
-    <main class="app-card">
+    <div class="container">
 
         <div class="logo-container">
             <div class="heart-icon-bg">
@@ -23,27 +23,22 @@
             <span class="plus-decor decor-3">+</span>
         </div>
 
-        <h1 class="main-title">Minha Pressão Arterial</h1>
-        <p class="subtitle">Cuidar de você é a melhor escolha</p>
+        <h1>Minha Pressão Arterial</h1>
+        <p>Cuidar de você é a melhor escolha</p>
 
-        <button id="btnBuscar" class="btn-search">
+        <button id="btnBuscar">
             <i data-lucide="search"></i> Buscar Registros
         </button>
 
-        <div id="mensagem" class="info-alert">
+        <div id="mensagem">
             <i data-lucide="heart" class="info-heart-icon"></i>
             <span>Clique em buscar para ver seus registros.</span>
         </div>
 
-        <section class="records-section">
-            <h2 class="records-title">Últimos Registros</h2>
+        <h2>Últimos Registros</h2>
 
-            <div id="tabela-records" class="records-list">
-
-            </div>
-        </section>
-
-    </main>
+        <div id="tabela-records"></div>
+    </div>
 </div>
 
 <script src="script.js"></script>
