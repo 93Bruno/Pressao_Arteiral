@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
     const registros = data.map(registro => ({
         ...registro,
-        data_hora: registro.data_hora.split(',')[0]
+        data_hora: registro.data_hora.substring(0, 10)
     }));
 
     return res.status(200).json(registros);
