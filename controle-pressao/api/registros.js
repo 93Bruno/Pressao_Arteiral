@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const { data, error } = await supabase
         .from('registro_pressao')
         .select('id_registro, data_hora, sistolica, diastolica')
-        .order('id_registro', { ascending: false });
+        .order('data_hora', { ascending: false });
 
     if (error) {
         return res.status(500).json({
@@ -18,12 +18,14 @@ export default async function handler(req, res) {
         });
     }
 
-    const registros = data.map(registro => ({
-        ...registro,
-        data_hora: registro.data_hora.split(',')[0]
-    }));
+    const registros = data.map(registro => {
+        const [ano, mes, dia] = registro.data_hora.split('T')[0].split('-');
 
-    console.log(data[0].data_hora);
+        return {
+            ...registro,
+            data_hora: `${dia}/${mes}/${ano}`
+        };
+    });
+
     return res.status(200).json(registros);
-
 }
