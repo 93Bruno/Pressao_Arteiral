@@ -17,6 +17,8 @@
     --status-attention-bg: #fff7eb;
     --status-high: #ff4d4d;
     --status-high-bg: #ffebeb;
+    --status-low: #3E78FF;
+    --status-low-bg: #edf2ff;
 }
 
 * {
@@ -294,6 +296,12 @@ h2::after {
     border: 1px solid rgba(255, 77, 77, 0.25);
 }
 
+.badge-low {
+    background-color: var(--status-low-bg);
+    color: var(--status-low);
+    border: 1px solid rgba(62, 120, 255, 0.25);
+}
+
 /* Indicador de status lateral direito */
 .col-status {
     flex-direction: row !important;
@@ -311,6 +319,7 @@ h2::after {
 .status-normal { background-color: var(--status-normal); }
 .status-attention { background-color: var(--status-attention); }
 .status-high { background-color: var(--status-high); }
+.status-low { background-color: var(--status-low); }
 
 .status-text {
     font-size: 0.8rem;

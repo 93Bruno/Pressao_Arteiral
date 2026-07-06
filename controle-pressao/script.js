@@ -34,8 +34,13 @@ async function buscarRegistros() {
             const sisExibicao = sis > 40 ? Math.floor(sis / 10) : sis;
             const diaExibicao = dia > 40 ? Math.floor(dia / 10) : dia;
 
-            // Regra de coloração baseada nos valores de exibição (ex: 14 e 9)
-            if (sisExibicao >= 14 || diaExibicao >= 9) {
+            // NOVA CONDIÇÃO: Pressão Baixa
+            if (sisExibicao <= 10 && diaExibicao <= 6) {
+                statusClass = "low";
+                statusText = "Baixa";
+            }
+            // Regra de coloração baseada nos valores de exibição elevados
+            else if (sisExibicao >= 14 || diaExibicao >= 9) {
                 statusClass = "high";
                 statusText = "Alta";
             } else if (sisExibicao >= 13 || diaExibicao >= 8.5) {
