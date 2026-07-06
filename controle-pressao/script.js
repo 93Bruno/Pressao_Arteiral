@@ -32,7 +32,7 @@ async function buscarRegistros(){
 
             const linha = `
             <tr>
-                <td>${registro.id_registro}</td>
+                <td>${registro.dia}</td>
                 <td>${formatarData(registro.data_hora)}</td>
                 <td>${registro.sistolica}</td>
                 <td>${registro.diastolica}</td>
