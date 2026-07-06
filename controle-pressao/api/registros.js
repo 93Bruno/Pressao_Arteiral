@@ -9,8 +9,8 @@ export default async function handler(req, res) {
 
     const { data, error } = await supabase
         .from('registro_pressao')
-        .select('dia:id_registro, data_hora, sistolica, diastolica')
-        .order('data_hora', { ascending: false });
+        .select('id_registro, data_hora, sistolica, diastolica')
+        .order('id_registro', { ascending: false });
 
     if (error) {
         return res.status(500).json({
